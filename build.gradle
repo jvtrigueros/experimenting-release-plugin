@@ -25,12 +25,18 @@ scmVersion {
         prefix = ''
     }
 
+    String pluginPath = "src/main/resources/META-INF/plugin.xml"
     hooks {
-        pre 'fileUpdate', [ file: "src/main/resources/META-INF/plugin.xml"
+        pre 'fileUpdate', [ file: pluginPath
                           , pattern: {v, c -> /(<version>)${c.currentVersion}-SNAPSHOT/}
                           , replacement: {v, p -> "\$1$v"}
                           ]
         pre 'commit'
+
+        post 'fileUpdate', [ file: pluginPath
+                           , pattern: {v, c -> /(<version>)$v/}
+                           , replacement: {v, c -> ""}
+                           ]
     }
 }
 

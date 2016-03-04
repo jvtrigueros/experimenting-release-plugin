@@ -21,6 +21,7 @@ dependencies {
 
 scmVersion {
     versionIncrementer 'incrementMinor'
+    ignoreUncommittedChanges = false
     tag {
         prefix = ''
     }
@@ -28,14 +29,14 @@ scmVersion {
     String pluginPath = "src/main/resources/META-INF/plugin.xml"
     hooks {
         pre 'fileUpdate', [ file: pluginPath
-                          , pattern: {v, c -> /(<version>)${c.currentVersion}-SNAPSHOT/}
-                          , replacement: {v, p -> "\$1$v"}
+                          , pattern: {v, c -> /(<version>)${c.currentVersion}-SNAPSHOT(<\/version>)/}
+                          , replacement: {v, p -> "\$1$v\$2"}
                           ]
         pre 'commit'
 
         post 'fileUpdate', [ file: pluginPath
-                           , pattern: {v, c -> print(c.currentVersion); /(<version>)${c.currentVersion}(<\/version>)/}
-                           , replacement: {v, c -> "\$1${c.readVersion()}-SNAPSHOT\$2"}
+                           , pattern: {v, c -> println("readversion ${c.readVersion()}"); /(<version>)${c.readVersion()}(<\/version>)/}
+                           , replacement: {v, c -> println(c.readVersion()); "\$1${c.readVersion()}-SNAPSHOT\$2"}
                            ]
         post 'commit'
     }

@@ -20,6 +20,10 @@ dependencies {
 }
 
 scmVersion {
+    versionIncrementer 'incrementMinor'
+    versionCreator { version, position ->
+        (position.onTag) ? "v$version" : version
+    }
 }
 
 group 'test'

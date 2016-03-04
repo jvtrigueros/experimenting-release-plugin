@@ -30,6 +30,7 @@ scmVersion {
                           , pattern: {v, c -> /(<version>)${c.currentVersion}-SNAPSHOT/}
                           , replacement: {v, p -> "\$1$v"}
                           ]
+        pre 'commit'
     }
 }
 

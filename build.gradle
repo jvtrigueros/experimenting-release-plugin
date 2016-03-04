@@ -28,7 +28,7 @@ scmVersion {
     hooks {
 //        D:\workspace\twitch-chat\src\main\resources\META-INF\plugin.xml
         pre 'fileUpdate', [ file: "src/main/resources/META-INF/plugin.xml"
-                          , pattern: {v, p -> /(<version>)$v/}
+                          , pattern: {v, p -> /(<version>)$v-SNAPSHOT/}
                           , replacement: {v, p -> "\$1$v"}
                           ]
     }

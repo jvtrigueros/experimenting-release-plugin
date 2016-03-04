@@ -37,6 +37,7 @@ scmVersion {
                            , pattern: {v, c -> print(c.currentVersion); /(<version>)${c.currentVersion}(<\/version>)/}
                            , replacement: {v, c -> "\$1${c.readVersion()}-SNAPSHOT\$2"}
                            ]
+        post 'commit'
     }
 }
 

@@ -42,8 +42,9 @@ scmVersion {
                           , pattern: {v, c -> /(<version>)${c.readVersion()}/}
                           , replacement: {v, c -> "\$1$v"}
                           ]
-        /*pre 'commit'
+        pre 'commit'
 
+        /*
         post 'fileUpdate', [ file: pluginPath
                            , pattern: {v, c -> /(<version>)${c.readVersion()}(<\/version>)/}
                            , replacement: {v, c -> println(c.releaseVersion); "\$1${c.readVersion()}-SNAPSHOT\$2"}

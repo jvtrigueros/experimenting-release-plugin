@@ -19,6 +19,11 @@ dependencies {
     compile "org.scala-lang:scala-library:2.11.7"
 }
 
+def fixPluginVersion = { version, context ->
+    def logger = context.logger
+    logger.info("position: $context.position")
+}
+
 scmVersion {
     versionIncrementer 'incrementMinor'
     ignoreUncommittedChanges = false
@@ -29,7 +34,7 @@ scmVersion {
     String pluginPath = "src/main/resources/META-INF/plugin.xml"
     hooks {
         pre 'fileUpdate', [ file: pluginPath
-                          , pattern: {v, c -> println(v); /(<version>)${c.currentVersion}-SNAPSHOT(<\/version>)/}
+                          , pattern: fixPluginVersion
                           , replacement: {v, c -> "\$1$v\$2"}
                           ]
         /*pre 'commit'

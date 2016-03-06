@@ -25,7 +25,8 @@ def fixPluginVersion = { version, context ->
     logger.info("previousVersion: $context.previousVersion")
     logger.info("currentVersion: $context.currentVersion")
     logger.info("readVersion(): ${context.readVersion()}")
-    /(<version>)/
+    logger.info("///////")
+    /(<version>)${context.readVersion()}/
 }
 
 scmVersion {
@@ -39,7 +40,7 @@ scmVersion {
     hooks {
         pre 'fileUpdate', [ file: pluginPath
                           , pattern: fixPluginVersion
-                          , replacement: {v, c -> "\$1$v\$2"}
+                          , replacement: fixPluginVersion
                           ]
         /*pre 'commit'
 

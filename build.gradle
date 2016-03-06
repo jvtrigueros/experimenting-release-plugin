@@ -22,6 +22,10 @@ dependencies {
 def fixPluginVersion = { version, context ->
     def logger = context.logger
     logger.info("position: $context.position")
+    logger.info("previousVersion: $context.previousVersion")
+    logger.info("currentVersion: $context.currentVersion")
+    logger.info("readVersion(): $context.readVersion()")
+    /(<version>)/
 }
 
 scmVersion {

@@ -24,7 +24,7 @@ def fixPluginVersion = { version, context ->
     logger.info("position: $context.position")
     logger.info("previousVersion: $context.previousVersion")
     logger.info("currentVersion: $context.currentVersion")
-    logger.info("readVersion(): $context.readVersion()")
+    logger.info("readVersion(): ${context.readVersion()}")
     /(<version>)/
 }
 

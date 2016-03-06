@@ -39,8 +39,8 @@ scmVersion {
     String pluginPath = "src/main/resources/META-INF/plugin.xml"
     hooks {
         pre 'fileUpdate', [ file: pluginPath
-                          , pattern: fixPluginVersion
-                          , replacement: fixPluginVersion
+                          , pattern: {v, c -> /(<version>)${c.readVersion()}/}
+                          , replacement: {v, c -> "\$1$v"}
                           ]
         /*pre 'commit'
 

@@ -44,7 +44,7 @@ scmVersion {
         pre { c ->
             c.logger.info("$c.patternsToCommit")
         }
-//        pre 'commit'
+        pre 'commit'
 
         /*post 'fileUpdate', [ file: pluginPath
                            , pattern: {v, c -> /(<version>)$c.currentVersion/}

@@ -33,7 +33,8 @@ scmVersion {
                           , replacement: {v, c -> "\$1$v"}
                           ]
         pre { c ->
-            c.addCommitPattern(string)
+            c.logger.info("Adding $pluginPath to `patternsToCommit")
+            c.addCommitPattern(pluginPath)
             c.logger.info("$c.patternsToCommit")
         }
         pre 'commit'

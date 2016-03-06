@@ -39,17 +39,17 @@ scmVersion {
     hooks {
         pre 'fileUpdate', [ file: pluginPath
                           , pattern: {v, c -> /(<version>)${c.readVersion()}/}
-                          , replacement: {v, c ->
-            c.logger.info(c.patternsToCommit)
-            "\$1$v"
-        }
+                          , replacement: {v, c -> "\$1$v"}
                           ]
-        pre 'commit'
+        pre { c ->
+            c.logger.info("$c.patternsToCommit")
+        }
+//        pre 'commit'
 
-        post 'fileUpdate', [ file: pluginPath
+        /*post 'fileUpdate', [ file: pluginPath
                            , pattern: {v, c -> /(<version>)$c.currentVersion/}
                            , replacement: {v, c -> "\$1$v-SNAPSHOT"}
-                           ]
+                           ]*/
     }
 }
 

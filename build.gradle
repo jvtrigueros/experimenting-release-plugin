@@ -33,7 +33,7 @@ scmVersion {
 
         post 'fileUpdate', [ file: pluginPath
                            , pattern: {v, c -> /(<version>)$c.currentVersion/}
-                           , replacement: {v, c -> "\$1$v-SNAPSHOT"}
+                           , replacement: {v, c -> "\$1${c.readVersion()}-SNAPSHOT"}
                            ]
 
     }

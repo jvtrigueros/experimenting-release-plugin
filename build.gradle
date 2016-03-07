@@ -28,15 +28,15 @@ scmVersion {
             c.logger.info("Adding $pluginPath to `patternsToCommit`")
             c.addCommitPattern(pluginPath)
             c.logger.info("$c.patternsToCommit")
+            c.logger.info("$versionCreator")
         }
 
-        pre 'commit'
+        /*pre 'commit'
 
         post 'fileUpdate', [ file: pluginPath
                            , pattern: {v, c -> /(<version>)$c.currentVersion/}
                            , replacement: {v, c -> "\$1${c.readVersion()}-SNAPSHOT"}
-                           ]
-
+                           ]*/
     }
 }
 

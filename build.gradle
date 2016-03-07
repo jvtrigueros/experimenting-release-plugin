@@ -12,6 +12,7 @@ apply plugin: 'idea'
 
 scmVersion {
     versionIncrementer 'incrementMinor'
+    ignoreUncommittedChanges = false
     tag {
         prefix = ''
     }
